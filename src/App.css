@@ -7,9 +7,9 @@
     width: 20%;
     max-width: 15em;
     background-color: #212529;
-    box-shadow: 5px 0 10px gray;
     position: sticky;
     top: 0;
+    /* box-shadow: 5px 0 10px gray; */
 }
 
 .right_content {
@@ -18,8 +18,4 @@
 
 .active {
     background-color: #0d6efd;
-}
-
-.element_container {
-    padding: 0.5em 1.2em 0 1em;
 }

@@ -1,0 +1,116 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Pokemon.css';
+
+function Pokemon({ searchValue }) {
+
+    const navigate = useNavigate();
+    const [pokemonArray, setPokemonArray] = useState([]);
+    const [pokemonArray2, setPokemonArray2] = useState([]);
+    const [offset, setOffset] = useState(0);
+    // const [imageArray, setimageArray] = useState([]);
+    // const [imageAndDetailsArray, setImageAndDetailsArray] = useState([]);
+
+    useEffect(() => {
+        getData();
+        // addImageAndDetails();
+    }, [offset]);
+
+    useEffect(() => {
+        if (searchValue !== '') {
+            const filteredArray = pokemonArray.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))
+            setPokemonArray(filteredArray);
+        } else {
+            setPokemonArray(pokemonArray2);
+        }
+    }, [searchValue]);
+
+    async function getData() {
+        try {
+            const data = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${20}`, {
+                method: 'GET',
+            });
+            const parseData = await data.json();
+            setPokemonArray(parseData.results);
+            setPokemonArray2(parseData.results);
+            // getImage(parseData.results);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // function getImage(data) {
+    //     const imgArray = [];
+    //     data.map(element => {
+    //         fetch(element.url)
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 imgArray.push(data.sprites.front_default)
+    //             });
+    //     });
+    //     setimageArray(imgArray);
+    // }
+    // console.log(imageArray);
+
+    // function addImageAndDetails() {
+    //     const abc = [];
+    //     for (let i = 0; i < pokemonArray2.length; i++) {
+    //         abc.push({
+    //             details: pokemonArray2[i],
+    //             img: imageArray[i]
+    //         });
+    //         setImageAndDetailsArray(abc);
+    //     }
+    // }
+
+    function handleNavigate(items) {
+        const i = items.url;
+        // const a = i.split('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/');
+        const a = i.split('https://pokeapi.co/api/v2/pokemon/');
+        const index = a[1].split('/');
+        navigate(`/pokemon-details/${index[0]}`);
+    }
+
+    return (
+        <div className='pokemon_main'>
+            <h1>PokeDex</h1>
+            <div className='btn_container'>
+
+                <button
+                    onClick={() => setOffset(prevState => prevState - 20)}
+                    disabled={!offset}
+                >&larr; Previous</button>
+
+                <button
+                    className='btn_class'
+                    onClick={() => setOffset(prevState => prevState + 20)}
+                >Next &rarr;</button>
+
+            </div>
+            <div className='pokemon_inner_container'>
+                {
+                    // imageAndDetailsArray.length > 0 && imageAndDetailsArray.map(items => (
+                    pokemonArray.length > 0 && pokemonArray.map(items => (
+                        <div key={items.url} className='pokemon_items_container'>
+                            <h3>{items.name.toUpperCase()}</h3>
+                            {/* <img src={items.img} /> */}
+
+                            <button
+                                onClick={() => handleNavigate(items)}
+                            >More details
+                            </button>
+
+                        </div>
+                    ))
+                }
+            </div>
+            {
+                // pokemonArray.map(item => <p>{item.name.toString()}</p>)
+                // imageArray.map(item => <p>{item.toString()}</p>)
+            }
+        </div>
+    );
+}
+
+export default Pokemon;

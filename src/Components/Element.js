@@ -1,12 +1,13 @@
 import React, { lazy } from 'react';
-import Home from './Home/Home';
 import { useRoutes, Navigate } from 'react-router-dom';
+import Home from './Home/Home';
 
 const LazyHome = lazy(() => import('../Components/Home/Home1'));
 const LazyPokemon = lazy(() => import('../Components/Pokemon/Pokemon'));
 const LazyPokemonDetails = lazy(() => import('../Components/Pokemon/PokemonDetails/PokemonDetails'));
+const LazyCategoriesDetails = lazy(() => import('../Components/Categories/CategoriesDetails/CategoriesDetails'))
 
-function Element() {
+function Element({ searchValue }) {
 
     const routes = useRoutes([
         {
@@ -23,12 +24,16 @@ function Element() {
                 },
                 {
                     path: 'pokemon',
-                    element: <LazyPokemon />
-                    
+                    element: <LazyPokemon searchValue={searchValue} />
+
                 },
                 {
-                    path: 'pokemon-details/:ID',
+                    path: 'pokemon-details/:id',
                     element: <LazyPokemonDetails />
+                },
+                {
+                    path: 'categories/:category/:id',
+                    element: <LazyCategoriesDetails />
                 },
             ]
         },

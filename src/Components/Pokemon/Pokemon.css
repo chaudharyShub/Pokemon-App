@@ -1,18 +1,17 @@
 .pokemon_main {
-    padding-top: 10px;
-    padding-bottom: 30px;
+    height: 90vh;
+    overflow-y: scroll;
+    background-image: url('../../images/pokemonAsh.jfif');
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #1365b5;
+    padding: 0.5em 1.2em 0 1em;
 }
 
-.pokemon_items_container {
-    border: 1px solid gray;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    height: 15em;
-    width: 70%;
-    transition: 0.2s ease;
+.pokemon_main > h1 {
+    font-size: 3.5rem;
+    color: white;
 }
 
 .pokemon_inner_container {
@@ -24,24 +23,39 @@
     gap: 2em;
 }
 
+.pokemon_items_container {
+    height: 15em;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+    background: rgba(255, 255, 255, 0.3);
+    /* background: rgba(192,192,192, 0.2); */
+    backdrop-filter: blur(5px);
+}
+
+.pokemon_items_container img {
+    width: 5em;
+}
+
 .pokemon_items_container h3 {
     transition: 0.3s ease;
     margin: 1em 0;
 }
 
 .pokemon_items_container:hover {
-    border: 1px solid white;
-    box-shadow: 0 0 15px gray;
-}
-
-.pokemon_items_container:hover h3 {
-    transform: scale(1.1);
+    scale: 1.06;
 }
 
 .pokemon_items_container button {
     all: unset;
     cursor: pointer;
-    border: 1px solid gray;
+    border: 1px solid black;
     margin: 1em 0;
     padding: 5px;
     border-radius: 5px;
@@ -49,22 +63,8 @@
 }
 
 .pokemon_items_container button:hover {
-    background-color: rgba(74, 74, 255, 0.756);
-    color: white;
-}
-
-.btn_container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 20px 0;
-}
-
-.btn_container button {
-    padding: 10px;
-    width: 6.5em;
-    border-radius: 10px;
+    background-color: #ffc107;
+    scale: 1.05;
 }
 
 @media only screen and (min-width: 650px) {

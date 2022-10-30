@@ -1,7 +1,9 @@
 import './Navbar.css';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Categories from '../Categories/Categories';
 
-function Navbar() {
+function Navbar({ setSearchValue }) {
+
     return (
         <nav className="navbar navbar-expand-lg navbar-info bg-info navbar_sticky">
             <div className="container-fluid">
@@ -10,10 +12,20 @@ function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <span className="example-spacer"></span>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 nav_list_container">
-                        {/* <li className="nav-item">
-                            <NavLink to='/home' className="nav-link" aria-current="page">Home</NavLink>
-                        </li> */}
+                        <Categories />
+                        <form className="d-flex" role="search">
+                            <input
+                                className="form-control me-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                                onChange={e => {
+                                    setSearchValue(e.target.value);
+                                }}
+                            />
+                        </form>
                     </ul>
                 </div>
             </div>

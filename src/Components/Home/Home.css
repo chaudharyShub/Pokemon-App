@@ -1,0 +1,39 @@
+.home_main {
+    height: 90vh;
+    overflow-y: hidden;
+    position: relative;
+    background-image: url('../../images/allPokemon.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    padding: 0.5em 1.2em 0 1em;
+}
+
+.home_main::before {
+    content: '';
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+    background: black;
+    z-index: -1;
+}
+
+.home_main h2 {
+    color: white;
+    font-size: 3rem;
+    z-index: 1;
+    padding: 0 0 0 10px;
+}
+
+#myVideo {
+    /* position: fixed; */
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    /* min-height: 100%; */
+}

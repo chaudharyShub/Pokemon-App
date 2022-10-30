@@ -1,0 +1,45 @@
+.category_links_main {
+    height: 90vh;
+    overflow-y: scroll;
+    background-image: url('../../../images/fourPokemons.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0.5em 1.2em 0 1em;
+}
+
+.category_links_container {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.category_links_container a {
+    text-decoration: none;
+    padding: 10px 0;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    text-align: center;
+    width: 5em;
+    background-color: wheat;
+    color: black;
+    transition: 0.2s ease;
+}
+
+.category_links_container a:hover {
+    color: black;
+    border: 1.5px solid black;
+    background-color: #fe6a0f;
+}
+
+.links_parent {
+    margin: 1em auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.links_parent h1 {
+    color: white;
+}

@@ -1,21 +1,22 @@
+import React, { useState } from 'react';
 import Element from './Element';
 import Navbar from './Navbar/Navbar';
 import SideNav from './SideNav/SideNav';
-import React from 'react';
 
 function Layout() {
+
+    const [searchValue, setSearchValue] = useState('');
+
     return (
         <div className='app_main'>
             <div className="app_sidenav">
                 <SideNav home="Home" />
             </div>
             <div className='right_content'>
-                <Navbar />
-                <div className='element_container'>
-                    <React.Suspense fallback="Loading... Please Wait">
-                        <Element />
-                    </React.Suspense>
-                </div>
+                <Navbar setSearchValue={setSearchValue} />
+                <React.Suspense fallback="Loading... Please Wait">
+                    <Element searchValue={searchValue} />
+                </React.Suspense>
             </div>
         </div>
     );
